@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 """Serialize instances to JSON file and deserialize JSON file to instances."""
 import json
-from models import base_model
+from models.base_model import BaseModel
 <<<<<<< HEAD
-from models import user
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 =======
 
 
@@ -48,7 +53,7 @@ class FileStorage:
 <<<<<<< HEAD
                     cls_name =o["__class__"]
                     del o["__class__"]
-                    self.new(eval(f"base_model.{cls_name}")(**o))
+                    self.new(eval(f"{cls_name}")(**o))
 
         except FileNotFoundError:
             return
