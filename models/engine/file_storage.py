@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import json
+from models import base_model
+from models import user
 
 class Filestorage():
     __file_path = "file.json"
@@ -21,9 +23,12 @@ class Filestorage():
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 obj_dict = json.load(f)
-                obj_dict = eval(self.__class__.__name__(obj_dict))
+                for o in obj_dict.values():
+                    cls_name =o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(f"base_model.{cls_name}")(**o))
 
-        except:
-            pass
+        except FileNotFoundError:
+            return
             
 
