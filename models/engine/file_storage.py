@@ -2,17 +2,15 @@
 """Serialize instances to JSON file and deserialize JSON file to instances."""
 import json
 from models.base_model import BaseModel
-<<<<<<< HEAD
 from models.user import User
+from models.place import Place
 from models.state import State
 from models.city import City
-from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
-=======
 
 
-class FileStorage:
+class FileStorage():
     """Initialize a class FileStorage.
 
     Attributes:
@@ -21,7 +19,6 @@ class FileStorage:
                 @__objects:     # an empty dictionary but will store all
                                 # objects each time an instance is called
     """
->>>>>>> b5101eb8f0bee183c393165de876b39dc29e4328
 
     __file_path = "file.json"
     __objects = {}
@@ -50,19 +47,9 @@ class FileStorage:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 obj_dict = json.load(f)
                 for o in obj_dict.values():
-<<<<<<< HEAD
-                    cls_name =o["__class__"]
-                    del o["__class__"]
-                    self.new(eval(f"{cls_name}")(**o))
-
-        except FileNotFoundError:
-            return
-            
-=======
                     cls_name = o["__class__"]
                     del o["__class__"]
-                    self.new(eval(f"base_model.{cls_name}")(**o))
->>>>>>> b5101eb8f0bee183c393165de876b39dc29e4328
+                    self.new(eval(f"{cls_name}")(**o))
 
         except FileNotFoundError:
             return

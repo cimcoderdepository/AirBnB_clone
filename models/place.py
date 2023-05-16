@@ -1,18 +1,19 @@
-#!usr/bin/python
+#!usr/bin/python3
+"""Module that inherit from BaseModel."""
 from models.base_model import BaseModel
 
 
-class place(BaseModel):
-    city.id = ""
+class Place(BaseModel):
+    """Class inheriting attributes from BaseModel."""
+
+    city_id = ""
+    user_id = ""
     name = ""
-    user.id = ""
-    number_rooms = 0
     description = ""
+    number_rooms = 0
     number_bathrooms = 0
-    max_guest = 0 
+    max_guest = 0
     price_by_night = 0
     latitude = 0.0
     longitude = 0.0
-    amenity_ids = 0
-
-~               
+    amenity_ids = []
